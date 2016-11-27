@@ -4,7 +4,6 @@ public class OpenParanthesis extends Paranthesis {
 
   public OpenParanthesis(Object parent) {
     super(parent);
-    // TODO Auto-generated constructor stub
   }
 
   @Override

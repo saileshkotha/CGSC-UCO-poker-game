@@ -6,6 +6,10 @@ public class Core {
   
   public static void main(String[] args) {
     System.out.println("Hello, world!");
+    
+    //ArithmeticMachine arithmeticMachine = new ArithmeticMachine();
+    //UserInterface userInterface = new UserInterface(arithmeticMachine);
+    
   }
 
   //private static ArrayList<SolutionSet> solutions = new ArrayList<SolutionSet>();
