@@ -2,26 +2,20 @@ package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
 
 /*
   Created by sailesh on 11/22/2016
-
-
-
-
  */
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -36,54 +30,79 @@ public class GuiPage extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Card24");
         primaryStage.getIcons().add(new Image("file:src/edu/uco/cs/cowtippingdwarfs/card24/userinterface/resources/1.png"));
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Scene scene = new Scene(grid, 300, 275);
-        primaryStage.setScene(scene);
 
-        Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        VBox root = new VBox();
 
-        Label userName = new Label("User Name:");
-        grid.add(userName, 0, 1);
 
-        TextField userTextField = new TextField();
-        grid.add(userTextField, 1, 1);
+        Text sceneTitle = new Text("Super Poker Game");
+        sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        HBox hb1 = new HBox(sceneTitle);
+        hb1.setAlignment(Pos.CENTER);
+        hb1.setPadding(new Insets(20));
+        root.getChildren().add(hb1);
 
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
+        Text scenehint = new Text("Select the numbers");
+        scenehint.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        HBox hb2 = new HBox(scenehint);
+        hb2.setAlignment(Pos.CENTER);
+        hb2.setPadding(new Insets(20));
+        root.getChildren().add(hb2);
 
-        PasswordField pwBox = new PasswordField();
-        grid.add(pwBox, 1, 2);
+        ObservableList<Integer> options =
+                FXCollections.observableArrayList(
+                        1,2,3,4,5,6,7,8,9,10,11,12,13
+                );
+        final ComboBox<Integer> comboBox1 = new ComboBox<>(options);
 
-        Button btn = new Button("Sign in");
-        HBox hbBtn = new HBox(10);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(btn);
-        grid.add(hbBtn, 1, 4);
+        comboBox1.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue ov, Integer t, Integer t1) {
+                System.out.println(t1);
+            }
+        });
 
-        final Text actiontarget = new Text();
-        grid.add(actiontarget, 1, 6);
+        final ComboBox<Integer> comboBox2 = new ComboBox<>(options);
+
+        final ComboBox<Integer> comboBox3 = new ComboBox<>(options);
+
+        final ComboBox<Integer> comboBox4 = new ComboBox<>(options);
+
+        HBox hb3 = new HBox(50);
+        hb3.getChildren().addAll(comboBox1, comboBox2, comboBox3, comboBox4);
+        hb3.setPadding(new Insets(20));
+        hb3.setAlignment(Pos.CENTER);
+        root.getChildren().add(hb3);
+
+        Button btn = new Button("Submit");
+        HBox hb4 = new HBox(btn);
+        hb4.setPadding(new Insets(20));
+        hb4.setAlignment(Pos.CENTER);
+        root.getChildren().add(hb4);
+
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                Scene secondScene = primaryStage.getScene();
-                GridPane grid1 = new GridPane();
-                grid1.setAlignment(Pos.CENTER);
-                grid1.setHgap(10);
-                grid1.setVgap(10);
-                grid1.setPadding(new Insets(25, 25, 25, 25));
-                secondScene = new Scene(grid1, 700, 450);
-                grid1.add(scenetitle, 0, 0, 2, 1);
-                primaryStage.setScene(secondScene);
+                System.out.println(comboBox1.getValue());
+                solutionsPage(primaryStage);
             }
         });
+        Scene scene = new Scene(root, 800, 800);
+        primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    private void solutionsPage(Stage stage){
+        Scene secondScene = stage.getScene();
+        GridPane grid1 = new GridPane();
+        grid1.setAlignment(Pos.CENTER);
+        grid1.setHgap(10);
+        grid1.setVgap(10);
+        grid1.setPadding(new Insets(25, 25, 25, 25));
+        secondScene = new Scene(grid1, 700, 450);
+        Text scenetitle = new Text("Welcome");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid1.add(scenetitle, 0, 0, 2, 1);
+        stage.setScene(secondScene);
     }
 }
