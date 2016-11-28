@@ -5,11 +5,13 @@ public abstract class OperatorNode {
   private Object parent = null;
   private OpenParanthesis paranthesisChild = null;
   private CardNode cardChild = null;
+  private int[] cardValues;
   
-  public OperatorNode(Object parent) {
+  public OperatorNode(Object parent, int[] cardValues) {
     this.parent = parent;
-    paranthesisChild = new OpenParanthesis(this);
-    cardChild = new CardNode(this, getHeight());
+    this.cardValues = cardValues;
+    paranthesisChild = new OpenParanthesis(this, cardValues);
+    cardChild = new CardNode(this, cardValues); //FIXME the error is here, change getHeight() to cards[getHeight()] or something
   }
   
   public int getHeight() {
@@ -20,7 +22,6 @@ public abstract class OperatorNode {
     } else {
       return 0;
     }
-    
   }
   
 }

@@ -8,9 +8,8 @@ public class CardNode {
   private int value = 0;
   private int height = 0;
   
-  public CardNode(Object parent, int value) {
+  public CardNode(Object parent, int[] cardValues) {
     this.parent = parent;
-    this.value = value;
     
     if(parent instanceof Paranthesis) {
       height = ((Paranthesis)parent).getHeight() + 1;
@@ -18,13 +17,15 @@ public class CardNode {
       height = ((OperatorNode)parent).getHeight() + 1;
     }
     
-    paranthesisChild = new ClosedParanthesis(this); //generate a closed paranthesis
+    value = cardValues[height];
+    
+    paranthesisChild = new ClosedParanthesis(this, cardValues); //generate a closed paranthesis
     
     if(height < 4) { //create branches for operators if necessary
-      operatorChildren[0] = new AdditionOperator(this);
-      operatorChildren[1] = new DivisionOperator(this);
-      operatorChildren[2] = new MultiplicationOperator(this);
-      operatorChildren[3] = new SubtractionOperator(this);
+      operatorChildren[0] = new AdditionOperator(this, cardValues);
+      operatorChildren[1] = new DivisionOperator(this, cardValues);
+      operatorChildren[2] = new MultiplicationOperator(this, cardValues);
+      operatorChildren[3] = new SubtractionOperator(this, cardValues);
     } else { //add code here to add combination to stack
       
     }

@@ -2,8 +2,8 @@ package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
 public class DivisionOperator extends OperatorNode {
 
-  public DivisionOperator(Object parent) {
-    super(parent);
+  public DivisionOperator(Object parent, int[] cardValues) {
+    super(parent, cardValues);
   }
 
   /*

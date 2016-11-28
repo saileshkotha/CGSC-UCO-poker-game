@@ -8,14 +8,18 @@ public class ArithmeticMachine {
   public void solve(Card[] cards) {
     cardTree = new CardTree(cards);
     cardTreeThread = new Thread(cardTree);
+    cardTreeThread.start();
   }
   
   public class CardTree implements Runnable {
     
-    Card[] cards;
+    int[] cardValues;
     
     public CardTree(Card[] cards) {
-      this.cards = cards;
+      cardValues = new int[cards.length];
+      for(int i = 0; i < cards.length; i++) {
+        cardValues[i] = cards[i].getValue();
+      }
     }
     
     OpenParanthesis firstTree = null;
@@ -23,8 +27,10 @@ public class ArithmeticMachine {
 
     @Override
     public void run() {
-      firstTree = new OpenParanthesis(this);
-      secondTree = new CardNode(this, cards[0].getValue());
+
+      firstTree = new OpenParanthesis(this, cardValues);
+      secondTree = new CardNode(this, cardValues);
+      
     }
     
   }

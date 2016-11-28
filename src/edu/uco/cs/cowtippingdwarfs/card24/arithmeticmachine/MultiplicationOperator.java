@@ -2,8 +2,8 @@ package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
 public class MultiplicationOperator extends OperatorNode {
 
-  public MultiplicationOperator(Object parent) {
-    super(parent);
+  public MultiplicationOperator(Object parent, int[] cardValues) {
+    super(parent, cardValues);
   }
 
   /*
