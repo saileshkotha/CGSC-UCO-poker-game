@@ -4,12 +4,9 @@ public class OpenParanthesis extends Paranthesis {
   
   private CardNode cardChild = null;
 
-  public OpenParanthesis(int[] cardValues, int height) {
-    super(cardValues, height);
-    
-    System.out.println("LEVEL " + getHeight() + " CREATED OPEN PARAN");
-    
-    cardChild = new CardNode(cardValues, getHeight());
+  public OpenParanthesis(int[] cardValues, int height, String expression) {
+    super(cardValues, height, expression + '(');
+    cardChild = new CardNode(cardValues, getHeight(), this.expression);
   }
 
   @Override

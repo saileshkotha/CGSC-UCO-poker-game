@@ -1,5 +1,7 @@
 package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
+import edu.uco.cs.cowtippingdwarfs.card24.Core;
+
 public class ArithmeticMachine {
 
   Thread cardTreeThread = null;
@@ -8,6 +10,7 @@ public class ArithmeticMachine {
   public void solve(Card[] cards) {
     cardTree = new CardTree(cards);
     cardTreeThread = new Thread(cardTree);
+    System.out.println("Started.");
     cardTreeThread.start();
   }
   
@@ -28,8 +31,10 @@ public class ArithmeticMachine {
     @Override
     public void run() {
 
-      firstTree = new OpenParanthesis(cardValues, -1);
-      secondTree = new CardNode(cardValues, -1);
+      firstTree = new OpenParanthesis(cardValues, -1, "");
+      secondTree = new CardNode(cardValues, -1, "");
+      System.out.println("Displaying results.");
+      Core.displayResults();
       
     }
     

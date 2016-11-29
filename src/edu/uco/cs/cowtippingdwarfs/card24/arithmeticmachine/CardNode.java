@@ -1,5 +1,7 @@
 package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
+import edu.uco.cs.cowtippingdwarfs.card24.Core;
+
 public class CardNode {
 
   private ClosedParanthesis paranthesisChild = null;
@@ -7,22 +9,21 @@ public class CardNode {
   private int value = 0;
   private int height = 0;
   
-  public CardNode(int[] cardValues, int height) {
+  public CardNode(int[] cardValues, int height, String expression) {
     
     this.height = ++height;
     value = cardValues[height];
+    expression += Integer.toString(value);
     
-    System.out.println("LEVEL " + height + " CREATED CARD");
-    
-    paranthesisChild = new ClosedParanthesis(cardValues, height); //generate a closed paranthesis
+    paranthesisChild = new ClosedParanthesis(cardValues, height, expression); //generate a closed paranthesis
     
     if(height < 3) { //create branches for operators if necessary
-      operatorChildren[0] = new AdditionOperator(cardValues, height);
-      operatorChildren[1] = new DivisionOperator(cardValues, height);
-      operatorChildren[2] = new MultiplicationOperator(cardValues, height);
-      operatorChildren[3] = new SubtractionOperator(cardValues, height);
+      operatorChildren[0] = new AdditionOperator(cardValues, height, expression);
+      operatorChildren[1] = new DivisionOperator(cardValues, height, expression);
+      operatorChildren[2] = new MultiplicationOperator(cardValues, height, expression);
+      operatorChildren[3] = new SubtractionOperator(cardValues, height, expression);
     } else { //add code here to add combination to stack
-      
+      Core.combinations.add(expression);
     }
     
   }

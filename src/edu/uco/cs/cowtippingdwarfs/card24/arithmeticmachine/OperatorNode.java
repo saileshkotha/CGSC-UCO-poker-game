@@ -6,13 +6,13 @@ public abstract class OperatorNode {
   private CardNode cardChild = null;
   private int[] cardValues;
   private int height = 0;
+  protected String expression;
   
-  public OperatorNode(int[] cardValues, int height) {
+  public OperatorNode(int[] cardValues, int height, String expression) {
     this.height = height;
     this.cardValues = cardValues;
-    System.out.println("LEVEL " + height + " CREATED OPERATOR");
-    paranthesisChild = new OpenParanthesis(cardValues, height);
-    cardChild = new CardNode(cardValues, height);
+    paranthesisChild = new OpenParanthesis(cardValues, height, expression);
+    cardChild = new CardNode(cardValues, height, expression);
   }
   
   public int getHeight() {

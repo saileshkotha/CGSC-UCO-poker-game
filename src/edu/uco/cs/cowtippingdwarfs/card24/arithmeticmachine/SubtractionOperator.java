@@ -4,16 +4,9 @@ public class SubtractionOperator extends OperatorNode {
   
   Object parent = null;
 
-  public SubtractionOperator(int[] cardValues, int height) {
-    super(cardValues, height);
+  public SubtractionOperator(int[] cardValues, int height, String expression) {
+    super(cardValues, height, expression + '-');
   }
-
-  /*
-  @Override
-  public double performOperation(CardTree card) {
-    return parent.getData() - card.getData();
-  }
-  */
   
   @Override
   public int getHeight() {
