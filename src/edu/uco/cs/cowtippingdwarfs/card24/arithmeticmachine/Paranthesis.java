@@ -7,6 +7,7 @@ public abstract class Paranthesis {
   protected int[] cardValues;
   
   public Paranthesis(Object parent, int[] cardValues) {
+    
     this.parent = parent;
     this.cardValues = cardValues;
   }
