@@ -28,8 +28,8 @@ public class ArithmeticMachine {
     @Override
     public void run() {
 
-      firstTree = new OpenParanthesis(this, cardValues);
-      secondTree = new CardNode(this, cardValues);
+      firstTree = new OpenParanthesis(cardValues, -1);
+      secondTree = new CardNode(cardValues, -1);
       
     }
     

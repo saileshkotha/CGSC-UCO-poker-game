@@ -4,17 +4,17 @@ public class OpenParanthesis extends Paranthesis {
   
   private CardNode cardChild = null;
 
-  public OpenParanthesis(Object parent, int[] cardValues) {
-    super(parent, cardValues);
+  public OpenParanthesis(int[] cardValues, int height) {
+    super(cardValues, height);
     
-    System.out.println("LEVEL " + getHeight() + " CREATED CLOSED PARAN");
+    System.out.println("LEVEL " + getHeight() + " CREATED OPEN PARAN");
     
-    cardChild = new CardNode(this, cardValues);
+    cardChild = new CardNode(cardValues, getHeight());
   }
 
   @Override
   public int getHeight() {
-    return (parent instanceof OperatorNode) ? ((OperatorNode)parent).getHeight() : 0;
+    return height;
   }
 
 }

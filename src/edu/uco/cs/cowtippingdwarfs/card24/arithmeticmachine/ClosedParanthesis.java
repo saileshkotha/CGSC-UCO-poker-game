@@ -4,17 +4,17 @@ public class ClosedParanthesis extends Paranthesis{
   
   private OperatorNode operatorChildren[] = new OperatorNode[4]; 
 
-  public ClosedParanthesis(Object parent, int[] cardValues) {
+  public ClosedParanthesis(int[] cardValues, int height) {
     
-    super(parent, cardValues);
+    super(cardValues, height);
     
     System.out.println("LEVEL " + getHeight() + " CREATED CLOSED PARAN");
     
-    if(getHeight() < 4) { //create branches for operators if necessary
-      operatorChildren[0] = new AdditionOperator(this, cardValues);
-      operatorChildren[1] = new DivisionOperator(this, cardValues);
-      operatorChildren[2] = new MultiplicationOperator(this, cardValues);
-      operatorChildren[3] = new SubtractionOperator(this, cardValues);
+    if(getHeight() < 3) { //create branches for operators if necessary
+      operatorChildren[0] = new AdditionOperator(cardValues, height);
+      operatorChildren[1] = new DivisionOperator(cardValues, height);
+      operatorChildren[2] = new MultiplicationOperator(cardValues, height);
+      operatorChildren[3] = new SubtractionOperator(cardValues, height);
     } else { //add code here to add combination to stack
       
     }
@@ -23,7 +23,7 @@ public class ClosedParanthesis extends Paranthesis{
 
   @Override
   public int getHeight() {
-    return ((CardNode)parent).getHeight();
+    return height;
   }
 
 }

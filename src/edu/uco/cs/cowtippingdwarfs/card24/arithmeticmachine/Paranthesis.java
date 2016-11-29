@@ -2,13 +2,13 @@ package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
 public abstract class Paranthesis {
   
-  protected Object parent = null;
   protected Object child = null;
   protected int[] cardValues;
+  protected int height = 0;
   
-  public Paranthesis(Object parent, int[] cardValues) {
-    
-    this.parent = parent;
+  public Paranthesis(int[] cardValues, int height) {
+
+    this.height = height;
     this.cardValues = cardValues;
   }
   

@@ -4,9 +4,8 @@ public class AdditionOperator extends OperatorNode {
   
   Object parent = null;
 
-  public AdditionOperator(Object parent, int[] cardValues) {
-    super(parent, cardValues);
-    this.parent = parent;
+  public AdditionOperator(int[] cardValues, int height) {
+    super(cardValues, height);
   }
 
   /*

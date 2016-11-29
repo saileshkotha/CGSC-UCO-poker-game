@@ -4,8 +4,8 @@ public class SubtractionOperator extends OperatorNode {
   
   Object parent = null;
 
-  public SubtractionOperator(Object parent, int[] cardValues) {
-    super(parent, cardValues);
+  public SubtractionOperator(int[] cardValues, int height) {
+    super(cardValues, height);
   }
 
   /*
