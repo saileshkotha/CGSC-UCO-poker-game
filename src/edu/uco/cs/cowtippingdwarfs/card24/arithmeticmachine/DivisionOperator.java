@@ -6,11 +6,4 @@ public class DivisionOperator extends OperatorNode {
     super(cardValues, height, expression + '/');
   }
 
-  /*
-  @Override
-  public double performOperation(CardTree card) {
-    return parent.getData() / card.getData();
-  }
-  */
-
 }
