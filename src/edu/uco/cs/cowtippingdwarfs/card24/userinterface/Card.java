@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 public class Card {
    
-   public final static int SPADES = 0;   // Codes for the 4 suits
+   public final static int SPADES = 0;
    public final static int HEARTS = 1;
    public final static int DIAMONDS = 2;
    public final static int CLUBS = 3;
@@ -46,8 +46,7 @@ public class Card {
    /**
     * Returns a String representation of the card's value.
     * @return for a regular card, one of the strings "Ace", "2",
-    * "3", ..., "10", "Jack", "Queen", or "King".  For a Joker, the 
-    * string is always numerical.
+    * "3", ..., "10", "Jack", "Queen", or "King".  
     */
    public String getValueAsString() {
          switch ( value ) {
