@@ -15,15 +15,15 @@ public class CardNode {
     value = cardValues[height];
     expression += Integer.toString(value);
     
-    paranthesisChild = new ClosedParanthesis(cardValues, height, expression); //generate a closed paranthesis
-    
     if(height < 3) { //create branches for operators if necessary
       operatorChildren[0] = new AdditionOperator(cardValues, height, expression);
       operatorChildren[1] = new DivisionOperator(cardValues, height, expression);
       operatorChildren[2] = new MultiplicationOperator(cardValues, height, expression);
       operatorChildren[3] = new SubtractionOperator(cardValues, height, expression);
+      paranthesisChild = new ClosedParanthesis(cardValues, height, expression); //generate a closed paranthesis
     } else { //add code here to add combination to stack
-      Core.combinations.add(expression);
+      Core.combinations.add(expression); //without ending paran
+      Core.combinations.add(expression + ')'); //with ending paran
     }
     
   }

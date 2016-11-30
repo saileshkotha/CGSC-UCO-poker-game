@@ -1,5 +1,7 @@
 package edu.uco.cs.cowtippingdwarfs.card24;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
@@ -29,8 +31,15 @@ public class Core {
   }
   
   public static void displayResults() {
-    for(int i = 0; i < combinations.size(); i++) {
-      System.out.println(combinations.get(i));
+    try {
+      PrintWriter out = new PrintWriter(new File("out.txt"));
+      for(int i = 0; i < combinations.size(); i++) {
+        //System.out.println(combinations.get(i));
+        out.println(combinations.get(i));
+      }
+      out.close();
+    } catch(Exception e) {
+      System.out.println("Error on output.");
     }
   }
   
