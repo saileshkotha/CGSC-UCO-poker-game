@@ -1,27 +1,28 @@
 package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
-import edu.uco.cs.cowtippingdwarfs.card24.Core;
-
 public class CardNode {
 
   private int value = 0;
   private int height = 0;
   
-  public CardNode(int[] cardValues, int height, String expression) {
+  public CardNode(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
     
     this.height = ++height;
     value = cardValues[height];
     expression += Integer.toString(value);
     
     if(height < 3) { //create branches for operators if necessary
-      new AdditionOperator(cardValues, height, expression);
-      new DivisionOperator(cardValues, height, expression);
-      new MultiplicationOperator(cardValues, height, expression);
-      new SubtractionOperator(cardValues, height, expression);
-      new ClosedParanthesis(cardValues, height, expression); //generate a closed paranthesis
-    } else { //add code here to add combination to stack
-      Core.combinations.add(expression); //without ending paran
-      Core.combinations.add(expression + ')'); //with ending paran
+      new AdditionOperator(cardValues, height, expression, paranRatio, paranSpacing);
+      new DivisionOperator(cardValues, height, expression, paranRatio, paranSpacing);
+      new MultiplicationOperator(cardValues, height, expression, paranRatio, paranSpacing);
+      new SubtractionOperator(cardValues, height, expression, paranRatio, paranSpacing);
+      new ClosedParanthesis(cardValues, height, expression, paranRatio, paranSpacing); //generate a closed paranthesis
+    } else { //add code here to add combination to results if and only if we have an appropriate number of parantheses
+      if(paranRatio == 0) { //if there are an equal number of open and closed parans
+        ArithmeticMachine.combinations.add(expression); //without ending paran
+      } else if(paranRatio == -1) { //if there is exactly one unmatched closed paran
+        ArithmeticMachine.combinations.add(expression + ')'); //with ending paran
+      }
     }
     
   }
