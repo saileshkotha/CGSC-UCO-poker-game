@@ -1,12 +1,8 @@
 
-package edu.uco.cs.cowtippingdwarfs.card24;
+package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
 
-import javafx.scene.image.Image;
 
-/**
- *
- * @author CameronLlewellyn
- */
+
 
 public class Card {
    
@@ -23,13 +19,14 @@ public class Card {
  
    private final int suit; 
    
-   private Image cardImage;
+   private String cardImage;
   
    private final int value;
   
    public Card(int theValue, int theSuit) {
-      value = theValue;
-      suit = theSuit;
+       value = theValue;
+       suit = theSuit;
+       cardImage = "file:src/edu/uco/cs/cowtippingdwarfs/card24/userinterface/resources/"+suit+"+"+value+".png";
    }
 
    public int getSuit() {
@@ -40,7 +37,7 @@ public class Card {
       return value;
    }
    
-   public Image getImage(){
+   public String getImage(){
        return this.cardImage;
    }
    /**
@@ -51,7 +48,7 @@ public class Card {
     */
    public String getValueAsString() {
          switch ( value ) {
-         case 1:   return "Ace";
+         case 1:   return "1";
          case 2:   return "2";
          case 3:   return "3";
          case 4:   return "4";
@@ -61,11 +58,15 @@ public class Card {
          case 8:   return "8";
          case 9:   return "9";
          case 10:  return "10";
-         case 11:  return "Jack";
-         case 12:  return "Queen";
-         default:  return "King";
+         case 11:  return "11";
+         case 12:  return "12";
+         default:  return "13";
          }
       }
+    @Override
+    public String toString() {
+        return getValueAsString();
+    }
 } 
 
 
