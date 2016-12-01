@@ -1,13 +1,9 @@
 package edu.uco.cs.cowtippingdwarfs.card24;
 
-import java.util.ArrayList;
-
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.Card;
 
 public class Core {
-  
-  public static ArrayList<String> combinations = new ArrayList<String>();
   
   public static void main(String[] args) {
     ArithmeticMachine arithmeticMachine = new ArithmeticMachine();
@@ -26,12 +22,6 @@ public class Core {
 
     //UserInterface userInterface = new UserInterface(arithmeticMachine);
     
-  }
-  
-  public static void displayResults() {
-    for(int i = 0; i < combinations.size(); i++) {
-      System.out.println(combinations.get(i));
-    }
   }
   
 }
