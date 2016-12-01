@@ -7,8 +7,8 @@ import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
  */
 public class GuiCore {
     public static void main(String[] args){
-        ArithmeticMachineSimulator arithmeticMachineSimulator = new ArithmeticMachineSimulator();
-        UserInterface userInterface = new UserInterface(arithmeticMachineSimulator);
+        ArithmeticMachine arithmeticMachine = new ArithmeticMachine();
+        UserInterface userInterface = new UserInterface(arithmeticMachine);
 
     }
 

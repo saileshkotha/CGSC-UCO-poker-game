@@ -17,19 +17,19 @@ public class UserInterface {
     private final ReadOnlyStringWrapper allSolutionsWrapper = new ReadOnlyStringWrapper("");
 
     GuiPage guiPage = new GuiPage();
-    UserInterface(ArithmeticMachineSimulator arithmeticMachineSimulator){
+    UserInterface(ArithmeticMachine arithmeticMachine){
         Card[][] cards = new Card[4][13];
         for(int i = 0; i < 4; i++) {
             for (int j = 0; j < 13;j++){
                 cards[i][j] = new Card(j+1,i);    //Defining 52 cards here.
             }
         }
-        startGui(arithmeticMachineSimulator, cards);
+        startGui(arithmeticMachine, cards);
     }
 
-    private void startGui(ArithmeticMachineSimulator arithmeticMachineSimulator, Card[][] cards){
+    private void startGui(ArithmeticMachine arithmeticMachine, Card[][] cards){
 
-        guiPage.setArithmeticMachineSimulator(arithmeticMachineSimulator);
+        guiPage.setArithmeticMachine(arithmeticMachine);
         guiPage.setCards(cards);
         guiPage.setUserInterface(this);
         Application.launch(GuiPage.class, (java.lang.String[]) null);

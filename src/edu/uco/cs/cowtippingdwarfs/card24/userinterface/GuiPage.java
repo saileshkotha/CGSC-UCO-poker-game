@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GuiPage extends Application {
-    private static ArithmeticMachineSimulator arithmeticMachineSimulator;  //Remove when merged
+    /*private static ArithmeticMachineSimulator arithmeticMachineSimulator;  *///Remove when merged
     private static ArithmeticMachine arithmeticMachine;
     private static Card[][] cards;
     private static UserInterface userInterface;
@@ -40,9 +40,10 @@ public class GuiPage extends Application {
         System.out.println("User interfaces is set"+userInterface);
     }
     //Remove when merged
+    /*
     public  void setArithmeticMachineSimulator(ArithmeticMachineSimulator arithmeticMachineSimulator) {
         this.arithmeticMachineSimulator = arithmeticMachineSimulator;
-    }
+    }*/
 
     /*public static void main(String[] args) {
         launch(args);
@@ -159,8 +160,8 @@ public class GuiPage extends Application {
                 selected[2] = comboBox3.getValue();
                 selected[3] = comboBox4.getValue();
                 //arithmeticMachine.solve(selected);
-                System.out.println(arithmeticMachineSimulator);
-                arithmeticMachineSimulator.solve(selected, userInterface);
+                System.out.println(arithmeticMachine);
+                arithmeticMachine.solve(selected, userInterface);
 
                 System.out.print("Selected cards sent to solver");
 
