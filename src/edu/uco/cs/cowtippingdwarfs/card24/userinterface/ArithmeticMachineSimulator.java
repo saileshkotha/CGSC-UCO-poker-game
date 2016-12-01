@@ -8,7 +8,7 @@ public class ArithmeticMachineSimulator {
     public void solve(Card[] cards, UserInterface userInterface){
         for (int i = 0; i < 5; i++) {
 
-            userInterface.addSolution("A solution", "A time");
+            userInterface.addSolution("A solu", "A time");
             System.out.println("Solution was sent to gui");
         }
     }

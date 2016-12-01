@@ -5,6 +5,7 @@ package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
  */
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -163,17 +164,17 @@ public class GuiPage extends Application {
 
                 System.out.print("Selected cards sent to solver");
 
-                solutionsPage(primaryStage, "Solution is displayed here as soon as the machine solves");
+                solutionsPage(primaryStage);
             }
         });
         Scene scene = new Scene(root, 800, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public void solutionsPage(Stage stage, String solutionString){
+    public void solutionsPage(Stage stage){
         Scene secondScene;
         VBox root = new VBox();
-        Text sceneTitle = new Text("Finding solution");
+        Text sceneTitle = new Text("Finding solutions.....");
         sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         HBox hb1 = new HBox(sceneTitle);
         hb1.setAlignment(Pos.CENTER);
@@ -181,12 +182,9 @@ public class GuiPage extends Application {
         root.getChildren().add(hb1);
 
 
-        Text solutionText = new Text(solutionString);
-        solutionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        HBox hb2 = new HBox(solutionText);
-        hb2.setAlignment(Pos.CENTER);
-        hb2.setPadding(new Insets(20));
-        root.getChildren().add(hb2);
+        final SolutionView solutionView = new SolutionView(userInterface);
+        root.getChildren().add(solutionView);
+
 
         Button btn = new Button("View all solutions");
         HBox hb5 = new HBox(btn);
@@ -194,8 +192,69 @@ public class GuiPage extends Application {
         hb5.setAlignment(Pos.CENTER);
         root.getChildren().add(hb5);
 
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                allSolutionsPage(stage);
+            }
+        });
+
         secondScene = new Scene(root, 700, 450);
         stage.setScene(secondScene);
+    }
+
+    private class SolutionView extends StackPane {
+
+        private final Label solutionLabel = new Label();
+
+        public SolutionView(UserInterface userInterface) {
+            solutionLabel.textProperty().bind(
+                    Bindings.format(
+                            "Solution Found: %s",
+                            userInterface.changeSolution()
+                    )
+            );
+            solutionLabel.setMinWidth(150);
+            solutionLabel.setAlignment(Pos.CENTER);
+
+            getChildren().setAll(solutionLabel);
+        }
+    }
+
+    public void allSolutionsPage(Stage stage){
+        Scene thirdScene;
+        VBox root = new VBox();
+        Text sceneTitle = new Text("All solutions... (Updates as solutions are found)");
+        sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        HBox hb1 = new HBox(sceneTitle);
+        hb1.setAlignment(Pos.CENTER);
+        hb1.setPadding(new Insets(20));
+        root.getChildren().add(hb1);
+
+
+        final AllSolutionView allSolutionView = new AllSolutionView(userInterface);
+        root.getChildren().add(allSolutionView);
+
+        thirdScene = new Scene(root, 700, 450);
+        stage.setScene(thirdScene);
+    }
+
+    private class AllSolutionView extends StackPane {
+
+        private final Label solutionLabel = new Label();
+
+        public AllSolutionView(UserInterface userInterface) {
+            solutionLabel.textProperty().bind(
+                    Bindings.format(
+                            "Solutions Found: \n%s",
+                            userInterface.changeAllSolution()
+                    )
+            );
+            solutionLabel.setMinWidth(150);
+            solutionLabel.setAlignment(Pos.CENTER);
+
+            getChildren().setAll(solutionLabel);
+        }
     }
 
     public void setArithmeticMachine(ArithmeticMachine arithmeticMachine) {
