@@ -17,7 +17,8 @@ public class UserInterface {
     private final ReadOnlyStringWrapper allSolutionsWrapper = new ReadOnlyStringWrapper("");
 
     GuiPage guiPage = new GuiPage();
-    UserInterface(ArithmeticMachine arithmeticMachine){
+    
+    public UserInterface(ArithmeticMachine arithmeticMachine){
         Card[][] cards = new Card[4][13];
         for(int i = 0; i < 4; i++) {
             for (int j = 0; j < 13;j++){
@@ -48,11 +49,16 @@ public class UserInterface {
             }
             allSolutionsWrapper.set(solutionsString);
         }
-
     }
+    
+    public void notifyOfNoSolution() {
+      System.out.println("THERE ARE NO SOLUTIONS."); //TODO do something with this in the GUI
+    }
+    
     public ReadOnlyStringProperty changeSolution(){
         return solutionWrapper.getReadOnlyProperty();
     }
+    
     public ReadOnlyStringProperty changeAllSolution(){
         return allSolutionsWrapper.getReadOnlyProperty();
     }

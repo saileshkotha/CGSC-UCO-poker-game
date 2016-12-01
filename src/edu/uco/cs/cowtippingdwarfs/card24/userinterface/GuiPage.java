@@ -39,15 +39,6 @@ public class GuiPage extends Application {
         GuiPage.userInterface = userInterface;
         System.out.println("User interfaces is set"+userInterface);
     }
-    //Remove when merged
-    /*
-    public  void setArithmeticMachineSimulator(ArithmeticMachineSimulator arithmeticMachineSimulator) {
-        this.arithmeticMachineSimulator = arithmeticMachineSimulator;
-    }*/
-
-    /*public static void main(String[] args) {
-        launch(args);
-    }*/
 
     public ComboBox<Card> defineComboBox(ArrayList<Integer> suits, int comboBoxRank, ImageView imageView){
 
@@ -161,7 +152,11 @@ public class GuiPage extends Application {
                 selected[3] = comboBox4.getValue();
                 //arithmeticMachine.solve(selected);
                 System.out.println(arithmeticMachine);
-                arithmeticMachine.solve(selected, userInterface);
+                //arithmeticMachine.solve(selected, userInterface);
+                arithmeticMachine.solve(new int[] { selected[0].getValue(),
+                                                    selected[1].getValue(),
+                                                    selected[2].getValue(),
+                                                    selected[3].getValue() }, userInterface);
 
                 System.out.print("Selected cards sent to solver");
 

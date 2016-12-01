@@ -1,8 +1,4 @@
-
 package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
-
-
-
 
 public class Card {
    
@@ -10,7 +6,6 @@ public class Card {
    public final static int HEARTS = 1;
    public final static int DIAMONDS = 2;
    public final static int CLUBS = 3;
-   
    
    public final static int ACE = 1;      
    public final static int JACK = 11;     
@@ -22,7 +17,7 @@ public class Card {
    private String cardImage;
   
    private final int value;
-  
+
    public Card(int theValue, int theSuit) {
        value = theValue;
        suit = theSuit;
@@ -40,6 +35,7 @@ public class Card {
    public String getImage(){
        return this.cardImage;
    }
+   
    /**
     * Returns a String representation of the card's value.
     * @return for a regular card, one of the strings "Ace", "2",
@@ -63,6 +59,7 @@ public class Card {
          default:  return "13";
          }
       }
+   
     @Override
     public String toString() {
         return getValueAsString();
