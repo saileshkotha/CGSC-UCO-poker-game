@@ -2,6 +2,7 @@ package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
 
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * Created by saile on 11/27/2016.
- */
+ **/
 
 public class UserInterface {
     public static ArrayList<String> solutions = new ArrayList<String>();
@@ -39,7 +40,13 @@ public class UserInterface {
     public void addSolution(String solution, String time){
         solutions.add(solution);
         if(solutions.size()==1){
-            solutionWrapper.set(solution);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    solutionWrapper.set(solution);
+                }
+            });
+
         }else if(solutions.size()>1){
             String solutionsString = "";
 
@@ -47,12 +54,30 @@ public class UserInterface {
             {
                 solutionsString += s + "\n";
             }
-            allSolutionsWrapper.set(solutionsString);
+            String finalSolutionsString = solutionsString;
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    allSolutionsWrapper.set(finalSolutionsString);
+                }
+            });
+
         }
     }
-    
+
     public void notifyOfNoSolution() {
-      System.out.println("THERE ARE NO SOLUTIONS."); //TODO do something with this in the GUI
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                solutionWrapper.set("THERE ARE NO SOLUTIONS");
+            }
+        });
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                allSolutionsWrapper.set("THERE ARE NO SOLUTIONS");
+            }
+        });
     }
     
     public ReadOnlyStringProperty changeSolution(){
