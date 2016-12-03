@@ -7,8 +7,8 @@ public class Core {
   
   public static void main(String[] args) {
     ArithmeticMachine arithmeticMachine = new ArithmeticMachine();
+    @SuppressWarnings("unused")
     UserInterface userInterface = new UserInterface(arithmeticMachine);
-    
   }
   
 }

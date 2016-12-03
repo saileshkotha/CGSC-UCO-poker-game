@@ -37,13 +37,13 @@ public class UserInterface {
         Application.launch(GuiPage.class, (java.lang.String[]) null);
     }
 
-    public void addSolution(String solution, String time){
-        solutions.add(solution);
+    public void addSolution(String solution, Long time){
+        solutions.add(solution + " (" + time + " milliseconds)");
         if(solutions.size()==1){
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    solutionWrapper.set(solution);
+                    solutionWrapper.set(solution + " (" + time + " milliseconds)");
                 }
             });
 
@@ -65,17 +65,17 @@ public class UserInterface {
         }
     }
 
-    public void notifyOfNoSolution() {
+    public void notifyOfNoSolution(Long time) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                solutionWrapper.set("THERE ARE NO SOLUTIONS");
+                solutionWrapper.set("NO SOLUTIONS (" + time + " milliseconds)");
             }
         });
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                allSolutionsWrapper.set("THERE ARE NO SOLUTIONS");
+                allSolutionsWrapper.set("NO SOLUTIONS (" + time + " milliseconds)");
             }
         });
     }

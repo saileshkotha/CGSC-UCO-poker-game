@@ -10,6 +10,7 @@ public class ArithmeticMachine {
   static UserInterface userInterface = null;
   static ScriptEngine scriptEngine = null;
   static boolean solutionsExist = false;
+  static long startTime;
   
   Thread cardTreeThread = null;
   CardTree cardTree = null;
@@ -19,6 +20,7 @@ public class ArithmeticMachine {
   }
   
   public void solve(int[] cards, UserInterface userInterface) {
+    startTime = System.currentTimeMillis();
     ArithmeticMachine.userInterface = userInterface;
     cardTree = new CardTree(cards);
     cardTreeThread = new Thread(cardTree);
@@ -73,6 +75,8 @@ public class ArithmeticMachine {
         new CardNode(cardValues[i], -1, "", 0, 0);
       }
       
+      done();
+      
     }
     
   }
@@ -81,14 +85,15 @@ public class ArithmeticMachine {
     try {
       if(Integer.parseInt(scriptEngine.eval(possibleSolution).toString()) == 24) {
         solutionsExist = true;
-        userInterface.addSolution(possibleSolution, "NULL"); //TODO add a time soon
+        userInterface.addSolution(possibleSolution, System.currentTimeMillis() - startTime); //TODO add a time soon
       }
     } catch(Exception e) { } //do nothing if there's an exception, it means that there was most likely a fraction (which is not 24)
   }
   
   public static void done() {
     if(!solutionsExist) {
-      userInterface.notifyOfNoSolution();
+      userInterface.notifyOfNoSolution(System.currentTimeMillis() - startTime);
+      System.out.println("No solutions were found.");
     }
   }
   

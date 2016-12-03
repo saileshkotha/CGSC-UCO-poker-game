@@ -6,7 +6,6 @@ package edu.uco.cs.cowtippingdwarfs.card24.userinterface;
 import edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine.ArithmeticMachine;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,7 +23,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +48,7 @@ public class GuiPage extends Application {
         final ComboBox<Card> comboBox = new ComboBox<>(options);
         comboBox.valueProperty().addListener(new ChangeListener<Card>() {
             @Override
-            public void changed(ObservableValue ov, Card t, Card t1) {
+            public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, Card t, Card t1) {
                 System.out.println(t1.getImage());
                 final Image image1 = new Image(t1.getImage());
 
@@ -99,7 +97,9 @@ public class GuiPage extends Application {
         hb2.setPadding(new Insets(20));
         root.getChildren().add(hb2);
 
-        ArrayList<Integer> suits = new ArrayList<Integer>() {{
+        ArrayList<Integer> suits = new ArrayList<Integer>() {
+          private static final long serialVersionUID = -1231171253160529989L;
+        {
             add(0);
             add(1);
             add(2);
@@ -109,7 +109,7 @@ public class GuiPage extends Application {
 
 
         Card[] allClubs = cards[suits.get(0)];
-        ObservableList<Card> options =
+        ObservableList<Card> options = //?
                 FXCollections.observableArrayList(
                         allClubs
                 );
@@ -157,7 +157,7 @@ public class GuiPage extends Application {
                                                     selected[2].getValue(),
                                                     selected[3].getValue() }, userInterface);
 
-                System.out.print("Selected cards sent to solver");
+                System.out.println("Selected cards sent to solver.");
 
                 solutionsPage(primaryStage);
               } catch(NullPointerException npe) {
