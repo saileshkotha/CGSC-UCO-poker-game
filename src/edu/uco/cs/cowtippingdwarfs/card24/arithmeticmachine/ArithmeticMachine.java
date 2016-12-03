@@ -14,8 +14,6 @@ public class ArithmeticMachine {
   Thread cardTreeThread = null;
   CardTree cardTree = null;
 
-  //public static ArrayList<String> combinations = new ArrayList<String>();
-  
   public ArithmeticMachine() {
     scriptEngine = new ScriptEngineManager().getEngineByName("JavaScript");
   }
@@ -75,9 +73,6 @@ public class ArithmeticMachine {
         new CardNode(cardValues[i], -1, "", 0, 0);
       }
       
-      //System.out.println("Displaying results.");
-      //displayResults();
-      
     }
     
   }
@@ -96,23 +91,5 @@ public class ArithmeticMachine {
       userInterface.notifyOfNoSolution();
     }
   }
-  
-  /*
-  public static void displayResults() {
-    try {
-      PrintWriter out = new PrintWriter(new File("out.txt"));
-      for(int i = 0; i < combinations.size(); i++) {
-        try {
-          if(Integer.parseInt(scriptEngine.eval(combinations.get(i)).toString()) == 24) {
-            System.out.println(combinations.get(i));
-          }
-        } catch(Exception e) { }
-      }
-      out.close();
-    } catch(Exception e) {
-      System.out.println("Error on output.");
-    }
-  }
-  */
   
 }

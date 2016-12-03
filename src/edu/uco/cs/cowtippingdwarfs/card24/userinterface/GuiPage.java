@@ -37,7 +37,7 @@ public class GuiPage extends Application {
 
     public void setUserInterface(UserInterface userInterface) {
         GuiPage.userInterface = userInterface;
-        System.out.println("User interfaces is set"+userInterface);
+        System.out.println("User interfaces is being set.");
     }
 
     public ComboBox<Card> defineComboBox(ArrayList<Integer> suits, int comboBoxRank, ImageView imageView){
@@ -145,14 +145,13 @@ public class GuiPage extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+              try {
                 Card[] selected = new Card[4];
                 selected[0] = comboBox1.getValue();
                 selected[1] = comboBox2.getValue();
                 selected[2] = comboBox3.getValue();
                 selected[3] = comboBox4.getValue();
-                //arithmeticMachine.solve(selected);
-                System.out.println(arithmeticMachine);
-                //arithmeticMachine.solve(selected, userInterface);
+                
                 arithmeticMachine.solve(new int[] { selected[0].getValue(),
                                                     selected[1].getValue(),
                                                     selected[2].getValue(),
@@ -161,6 +160,9 @@ public class GuiPage extends Application {
                 System.out.print("Selected cards sent to solver");
 
                 solutionsPage(primaryStage);
+              } catch(NullPointerException npe) {
+                System.out.println("At least one of the cards was not set.");
+              }
             }
         });
         Scene scene = new Scene(root, 800, 800);
