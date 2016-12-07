@@ -37,6 +37,10 @@ public class UserInterface {
         Application.launch(GuiPage.class, (java.lang.String[]) null);
     }
 
+    public  void clearSolution(){
+        solutions = new ArrayList<String>();
+    }
+
     public void addSolution(String solution, Long time){
         solutions.add(solution + " (" + time + " milliseconds)");
         if(solutions.size()==1){
@@ -46,7 +50,6 @@ public class UserInterface {
                     solutionWrapper.set(solution + " (" + time + " milliseconds)");
                 }
             });
-
         }else if(solutions.size()>1){
             String solutionsString = "";
 
@@ -61,7 +64,6 @@ public class UserInterface {
                     allSolutionsWrapper.set(finalSolutionsString);
                 }
             });
-
         }
     }
 
