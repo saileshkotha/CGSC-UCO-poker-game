@@ -109,7 +109,8 @@ public class GuiPage extends Application {
 
 
         Card[] allClubs = cards[suits.get(0)];
-        ObservableList<Card> options = //?
+        @SuppressWarnings("unused")
+		ObservableList<Card> options = //?
                 FXCollections.observableArrayList(
                         allClubs
                 );
@@ -256,12 +257,12 @@ public class GuiPage extends Application {
     }
 
     public void setArithmeticMachine(ArithmeticMachine arithmeticMachine) {
-        this.arithmeticMachine = arithmeticMachine;
+        GuiPage.arithmeticMachine = arithmeticMachine;
     }
 
     public void setCards(Card[][] cards) {
         System.out.println("Set method called for cards in guipage");
-        this.cards = cards;
+        GuiPage.cards = cards;
     }
 
 

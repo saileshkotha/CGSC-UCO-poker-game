@@ -21,7 +21,7 @@ public class CardNode {
     } else { //add code here to add combination to results if and only if we have an appropriate number of parantheses
       if(paranRatio == 0) { //if there are an equal number of open and closed parans
         ArithmeticMachine.addPossibleSolution(expression);
-      } else if(paranRatio == -1) { //if there is exactly one unmatched closed paran
+      } else if(paranRatio == -1 && paranSpacing > 1) { //if there is exactly one unmatched closed paran
         ArithmeticMachine.addPossibleSolution(expression + ')');
       }
     }
