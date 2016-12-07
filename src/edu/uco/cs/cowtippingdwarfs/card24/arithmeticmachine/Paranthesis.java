@@ -5,7 +5,7 @@ public abstract class Paranthesis {
   protected int height = 0;
   protected String expression;
   
-  public Paranthesis(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
+  public Paranthesis(int[] cardValues, int height, String expression) {
     this.height = height;
     this.expression = expression;
   }

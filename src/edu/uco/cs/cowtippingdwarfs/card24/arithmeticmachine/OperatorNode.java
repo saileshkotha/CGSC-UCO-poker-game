@@ -7,6 +7,7 @@ public abstract class OperatorNode {
   
   public OperatorNode(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
     this.height = height;
+    paranSpacing++;
     new OpenParanthesis(cardValues, height, expression, paranRatio, paranSpacing);
     new CardNode(cardValues, height, expression, paranRatio, paranSpacing);
   }

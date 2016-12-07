@@ -8,6 +8,7 @@ public class CardNode {
   public CardNode(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
     
     this.height = ++height;
+    paranSpacing++;
     value = cardValues[height];
     expression += Integer.toString(value);
     
@@ -19,11 +20,9 @@ public class CardNode {
       new ClosedParanthesis(cardValues, height, expression, paranRatio, paranSpacing); //generate a closed paranthesis
     } else { //add code here to add combination to results if and only if we have an appropriate number of parantheses
       if(paranRatio == 0) { //if there are an equal number of open and closed parans
-        //ArithmeticMachine.combinations.add(expression); //without ending paran
         ArithmeticMachine.addPossibleSolution(expression);
       } else if(paranRatio == -1) { //if there is exactly one unmatched closed paran
-        //ArithmeticMachine.combinations.add(expression + ')'); //with ending paran
-        ArithmeticMachine.addPossibleSolution(expression);
+        ArithmeticMachine.addPossibleSolution(expression + ')');
       }
     }
     
