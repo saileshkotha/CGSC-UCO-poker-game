@@ -16,10 +16,12 @@ public class UserInterface {
     public static ArrayList<String> solutions = new ArrayList<String>();
     private final ReadOnlyStringWrapper solutionWrapper = new ReadOnlyStringWrapper("");
     private final ReadOnlyStringWrapper allSolutionsWrapper = new ReadOnlyStringWrapper("");
+    private ArithmeticMachine arithmeticMachine;
 
     GuiPage guiPage = new GuiPage();
     
     public UserInterface(ArithmeticMachine arithmeticMachine){
+    	this.arithmeticMachine = arithmeticMachine;
         Card[][] cards = new Card[4][13];
         for(int i = 0; i < 4; i++) {
             for (int j = 0; j < 13;j++){
@@ -38,6 +40,7 @@ public class UserInterface {
     }
 
     public  void clearSolution(){
+    	arithmeticMachine.kill();
         solutions = new ArrayList<String>();
     }
 
@@ -80,6 +83,10 @@ public class UserInterface {
                 allSolutionsWrapper.set("NO SOLUTIONS (" + time + " milliseconds)");
             }
         });
+    }
+    
+    public void notifyOfFinalSolution(Long time) {
+    	addSolution("Done", time);
     }
     
     public ReadOnlyStringProperty changeSolution(){

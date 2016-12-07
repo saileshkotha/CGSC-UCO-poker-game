@@ -91,10 +91,21 @@ public class ArithmeticMachine {
   }
   
   public static void done() {
-    if(!solutionsExist) {
+    if(solutionsExist) {
+      userInterface.notifyOfFinalSolution(System.currentTimeMillis() - startTime);
+    } else {
       userInterface.notifyOfNoSolution(System.currentTimeMillis() - startTime);
       System.out.println("No solutions were found.");
     }
+  }
+  
+  @SuppressWarnings("deprecation")
+public void kill() {
+	  try {
+		  cardTreeThread.stop();
+	  } catch(Throwable t) {
+		  //thread may unsafely terminate; ignore
+	  }
   }
   
 }
