@@ -245,7 +245,7 @@ public class GuiPage extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                userInterface.cleasSolution();
+                userInterface.clearSolution();
                 start(stage);
             }
         });
