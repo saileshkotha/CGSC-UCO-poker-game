@@ -229,10 +229,11 @@ public class GuiPage extends Application {
         hb1.setAlignment(Pos.CENTER);
         hb1.setPadding(new Insets(20));
         root.getChildren().add(hb1);
-
+        ScrollPane scroll = new ScrollPane();
 
         final AllSolutionView allSolutionView = new AllSolutionView(userInterface);
-        root.getChildren().add(allSolutionView);
+        scroll.setContent(allSolutionView);
+        root.getChildren().add(scroll);
 
         thirdScene = new Scene(root, 700, 450);
         stage.setScene(thirdScene);
