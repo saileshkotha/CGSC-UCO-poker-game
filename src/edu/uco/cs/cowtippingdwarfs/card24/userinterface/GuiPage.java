@@ -235,6 +235,23 @@ public class GuiPage extends Application {
         scroll.setContent(allSolutionView);
         root.getChildren().add(scroll);
 
+        Button btn = new Button("Play again?");
+        HBox hb5 = new HBox(btn);
+        hb5.setPadding(new Insets(20));
+        hb5.setAlignment(Pos.CENTER);
+        root.getChildren().add(hb5);
+
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                userInterface.cleasSolution();
+                start(stage);
+            }
+        });
+
+
+
         thirdScene = new Scene(root, 700, 450);
         stage.setScene(thirdScene);
     }
