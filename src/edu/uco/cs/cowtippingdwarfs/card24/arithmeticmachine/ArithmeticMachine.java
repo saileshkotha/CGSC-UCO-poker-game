@@ -83,7 +83,8 @@ public class ArithmeticMachine {
   
   public static void addPossibleSolution(String possibleSolution) {
     try {
-      if(Integer.parseInt(scriptEngine.eval(possibleSolution).toString()) == 24) {
+      Double rawSolution = Double.parseDouble(scriptEngine.eval(possibleSolution).toString());
+      if(rawSolution >= 23.9999 && rawSolution <= 24.0001) { //allow for error due to rounding issues
         solutionsExist = true;
         userInterface.addSolution(possibleSolution, System.currentTimeMillis() - startTime); //TODO add a time soon
       }
