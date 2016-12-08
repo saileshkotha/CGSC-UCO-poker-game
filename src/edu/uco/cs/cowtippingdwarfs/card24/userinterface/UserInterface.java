@@ -42,6 +42,8 @@ public class UserInterface {
     public  void clearSolution(){
     	arithmeticMachine.kill();
         solutions = new ArrayList<String>();
+        solutionWrapper.set("");
+        allSolutionsWrapper.set("");
     }
 
     public void addSolution(String solution, Long time){
