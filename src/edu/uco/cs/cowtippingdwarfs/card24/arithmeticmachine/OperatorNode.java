@@ -1,22 +1,19 @@
 package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
 public abstract class OperatorNode {
-  
-  private Object parent = null;
-  private Object child = null;
-  
-  public OperatorNode(Object parent) {
-    this.parent = parent;
+
+  private int height = 0;
+  protected String expression;
+
+  public OperatorNode(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
+    this.height = height;
+    paranSpacing++;
+    new OpenParanthesis(cardValues, height, expression, paranRatio, paranSpacing);
+    new CardNode(cardValues, height, expression, paranRatio, paranSpacing);
   }
-  
+
   public int getHeight() {
-    if(parent instanceof Card) {
-      return ((CardNode)parent).getHeight();
-    } else if(parent instanceof OpenParanthesis){
-      return ((OpenParanthesis)parent).getHeight();
-    } else {
-      return 0;
-    }
+    return height;
   }
-  
+
 }

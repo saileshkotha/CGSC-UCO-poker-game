@@ -2,15 +2,8 @@ package edu.uco.cs.cowtippingdwarfs.card24.arithmeticmachine;
 
 public class SubtractionOperator extends OperatorNode {
 
-  public SubtractionOperator(Object parent) {
-    super(parent);
+  public SubtractionOperator(int[] cardValues, int height, String expression, int paranRatio, int paranSpacing) {
+    super(cardValues, height, expression + '-', paranRatio, paranSpacing);
   }
-
-  /*
-  @Override
-  public double performOperation(CardTree card) {
-    return parent.getData() - card.getData();
-  }
-  */
 
 }
